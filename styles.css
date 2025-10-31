@@ -1,9 +1,11 @@
 /* 🎨 Цветовые переменные */
 :root {
     --primary-color: #ffffff;
-    --accent-glow: #ffc4ff; /* Светлый центр свечения */
-    --secondary-glow: #a020f0; /* Внешний фиолетовый */
-    --logo-color: #d381ff; /* Цвет иконки логотипа */
+    --accent-glow-light: #ffc4ff; /* Очень светлый центр свечения */
+    --accent-glow-dark: #a020f0; /* Насыщенный фиолетовый для ореола */
+    --background-dark: #202020; /* Темно-серый фон как в исходнике */
+    --border-grey: #444444; /* Серая рамка кнопки */
+    --logo-color: #d381ff; /* Цвет логотипа Huma */
 }
 
 /* 💻 Сброс стилей и основные настройки */
@@ -14,49 +16,63 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif; 
-    background-color: #212121; /* Темный фон */
+    /* Используем Space Grotesk для более широкого и современного вида */
+    font-family: 'Space Grotesk', sans-serif; 
+    background-color: var(--background-dark); 
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 0 5%; 
+    /* Уменьшим padding по краям, чтобы увеличить рабочую область */
+    padding: 0 2%; 
 }
 
 /* 🔝 Header (Шапка сайта) */
 .main-header {
     width: 100%;
     max-width: 1200px;
-    padding: 20px 0;
+    padding: 30px 0; /* Увеличим отступы сверху/снизу */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* Добавим очень тонкую границу снизу для имитации разделителя */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Логотип */
+/* Логотип Huma */
 .logo {
-    font-size: 14px;
+    font-size: 16px; /* Чуть крупнее */
     font-weight: 700;
     display: flex; 
     align-items: center;
-    gap: 5px;
+    gap: 8px; /* Увеличим расстояние */
 }
 
 .logo-icon {
-    font-size: 20px; 
-    color: var(--logo-color);
+    /* Настройка условного места для иконки Huma */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: var(--logo-color);
+    border-radius: 50%;
+    /* Если использовать SVG или изображение, это можно удалить */
 }
 
 /* Навигация */
 .nav-links a {
     color: var(--primary-color);
     text-decoration: none;
-    margin-right: 30px;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: 0.8;
+    margin-right: 40px; /* Увеличим расстояние между ссылками */
+    font-size: 13px;
+    font-weight: 400; /* Сделаем обычным для контраста */
+    opacity: 0.7;
     letter-spacing: 0.5px;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
 }
 
 /* Общие стили для кнопок */
@@ -69,15 +85,17 @@ body {
     border-radius: 2px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    font-size: 12px;
 }
 
-/* Кнопка в хедере (яркая, фиолетовая) */
+/* Кнопка в хедере (яркая, прямоугольная) */
 .header-btn {
     padding: 8px 15px;
-    background: linear-gradient(90deg, #d381ff, #a020f0); 
+    /* Упростим фон для более чистого фиолетового цвета, как в исходнике */
+    background-color: var(--accent-glow-dark); 
     border: none;
-    font-size: 12px;
-    box-shadow: 0 0 8px rgba(211, 129, 255, 0.7); 
+    /* Добавим внутреннюю тонкую рамку */
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 10px rgba(160, 32, 240, 0.5); 
 }
 
 /* 🌟 Герой-секция (Основной контент) */
@@ -88,26 +106,32 @@ body {
     justify-content: center;
     flex-grow: 1; 
     text-align: center;
-    padding-bottom: 5vh; 
+    /* Увеличим отступ снизу */
+    padding-bottom: 10vh; 
 }
 
 /* ЭФФЕКТ СВЕЧЕНИЯ ТЕКСТА "Huma" */
 .glowing-text {
-    font-size: 15vw; 
-    max-width: 800px;
+    /* Увеличим размер для большей доминантности */
+    font-size: clamp(100px, 15vw, 220px); 
     font-weight: 900;
     text-transform: uppercase;
     color: var(--primary-color);
-    line-height: 1;
-    margin-bottom: 50px;
+    line-height: 0.8; /* Уменьшим межстрочный интервал */
+    margin-bottom: 70px;
     
+    /* Улучшенное, более "растянутое" свечение */
     text-shadow: 
-        0 0 8px var(--accent-glow),       
-        0 0 30px var(--accent-glow),      
-        0 0 80px var(--secondary-glow),   
-        0 0 150px var(--secondary-glow); 
+        0 0 10px var(--accent-glow-light),       
+        0 0 30px var(--accent-glow-light),      
+        0 0 100px var(--accent-glow-dark),   
+        0 0 150px var(--accent-glow-dark),
+        0 0 200px rgba(160, 32, 240, 0.8); /* Очень широкий, рассеянный свет */
     
-    filter: brightness(1.1) contrast(1.1); 
+    /* Добавим размытие, чтобы имитировать свечение и засветы */
+    filter: brightness(1.2) contrast(1.1); 
+    /* Тонкое вертикальное смещение для имитации блика снизу */
+    transform: translateY(-5px); 
 }
 
 /* Подзаголовок и описание */
@@ -116,51 +140,56 @@ body {
 }
 
 .tagline-container h2 {
-    font-size: clamp(20px, 4vw, 32px); 
+    font-size: clamp(24px, 4vw, 36px); 
     letter-spacing: 5px;
     margin-bottom: 20px;
-    font-weight: 700;
+    font-weight: 400; /* Сделаем его тоньше, как в оригинале */
 }
 
 .tagline-container p {
     max-width: 550px;
     font-size: 16px;
-    margin-bottom: 30px;
-    opacity: 0.8;
-    line-height: 1.5;
+    margin-bottom: 40px;
+    opacity: 0.6; /* Сделаем описание более тусклым */
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 /* Вторая кнопка (снизу) - с серой рамкой */
 .secondary-btn {
     padding: 10px 20px;
-    border: 1px solid #797979; /* Серая рамка */
+    border: 1px solid var(--border-grey); /* Точно серая рамка */
     background-color: transparent;
     font-size: 14px;
+    font-weight: 400; /* Сделаем текст тоньше */
     box-shadow: none;
+    transition: border-color 0.3s;
+}
+
+.secondary-btn:hover {
+    border-color: var(--primary-color);
 }
         
 /* Стрелка в кнопке */
 .launch-app-btn .arrow {
     margin-left: 5px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* 📱 Адаптивность для мобильных устройств */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .glowing-text {
         font-size: 18vw; 
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
     .nav-links {
-        display: none; /* Скрываем навигацию */
+        display: none; 
     }
     .main-header {
-        justify-content: center; 
-        gap: 20px;
+        justify-content: space-around; 
+        padding: 20px 0;
     }
-    .header-btn {
-        /* Делаем кнопку немного меньше на мобильных */
-        padding: 6px 12px;
-        font-size: 10px;
+    .logo, .header-btn {
+        font-size: 11px;
     }
 }
