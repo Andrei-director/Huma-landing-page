@@ -1,11 +1,12 @@
+/* 🎨 Цветовые переменные */
 :root {
-    --primary-color: #ffffff; /* White text */
-    --accent-glow: #a020f0; /* Purple glow color */
-    --background-color: #121212; /* Very dark gray/black */
-    --border-radius: 4px;
+    --primary-color: #ffffff;
+    --accent-glow: #ffc4ff; /* Светлый центр свечения */
+    --secondary-glow: #a020f0; /* Внешний фиолетовый */
+    --logo-color: #d381ff; /* Цвет иконки логотипа */
 }
 
-/* Base Styles */
+/* 💻 Сброс стилей и основные настройки */
 * {
     margin: 0;
     padding: 0;
@@ -13,18 +14,19 @@
 }
 
 body {
-    /* Меняем шрифт на Inter */
     font-family: 'Inter', sans-serif; 
-    background-color: var(--background-color);
+    background-color: #212121; /* Темный фон */
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding: 0 5%; 
 }
-/* Header Styles */
+
+/* 🔝 Header (Шапка сайта) */
 .main-header {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     padding: 20px 0;
     display: flex;
@@ -32,84 +34,133 @@ body {
     align-items: center;
 }
 
+/* Логотип */
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    /* You'd use an image or font styling for the small logo text/icon */
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; 
+    align-items: center;
+    gap: 5px;
 }
 
+.logo-icon {
+    font-size: 20px; 
+    color: var(--logo-color);
+}
+
+/* Навигация */
 .nav-links a {
     color: var(--primary-color);
     text-decoration: none;
     margin-right: 30px;
-    font-size: 14px;
-    opacity: 0.7;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
 }
 
-/* LAUNCH APP Button Styles (Header and Main) */
+/* Общие стили для кнопок */
 .launch-app-btn {
     display: inline-flex;
     align-items: center;
-    padding: 8px 15px;
-    border: 1px solid var(--primary-color);
-    background-color: transparent;
-    color: var(--primary-color);
     text-decoration: none;
-    font-size: 14px;
-    border-radius: var(--border-radius);
+    color: var(--primary-color);
+    font-weight: 700;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
-.launch-app-btn .arrow {
-    margin-left: 5px;
-    font-weight: bold;
+/* Кнопка в хедере (яркая, фиолетовая) */
+.header-btn {
+    padding: 8px 15px;
+    background: linear-gradient(90deg, #d381ff, #a020f0); 
+    border: none;
+    font-size: 12px;
+    box-shadow: 0 0 8px rgba(211, 129, 255, 0.7); 
 }
 
-/* Hero Section Styles */
+/* 🌟 Герой-секция (Основной контент) */
 .hero-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* Makes it take up available vertical space */
+    flex-grow: 1; 
     text-align: center;
-    padding-bottom: 10vh; /* Adjust as needed */
+    padding-bottom: 5vh; 
 }
 
-/* GLOWING TEXT EFFECT */
+/* ЭФФЕКТ СВЕЧЕНИЯ ТЕКСТА "Huma" */
 .glowing-text {
-    font-size: 12vw; /* Use vw for large, responsive text */
+    font-size: 15vw; 
+    max-width: 800px;
     font-weight: 900;
     text-transform: uppercase;
     color: var(--primary-color);
-    /* The key to the glow effect: text-shadow */
-    text-shadow: 
-        0 0 10px var(--accent-glow), 
-        0 0 20px var(--accent-glow), 
-        0 0 40px var(--accent-glow), 
-        0 0 80px var(--accent-glow);
-    /* Adding a subtle filter blur helps with the light bleed effect */
-    filter: brightness(1.2); 
     line-height: 1;
-    margin-bottom: 50px; /* Space between Huma and tagline */
+    margin-bottom: 50px;
+    
+    text-shadow: 
+        0 0 8px var(--accent-glow),       
+        0 0 30px var(--accent-glow),      
+        0 0 80px var(--secondary-glow),   
+        0 0 150px var(--secondary-glow); 
+    
+    filter: brightness(1.1) contrast(1.1); 
 }
 
-/* Tagline Styles */
+/* Подзаголовок и описание */
+.tagline-container {
+    padding: 0 20px;
+}
+
 .tagline-container h2 {
-    font-size: 28px;
+    font-size: clamp(20px, 4vw, 32px); 
     letter-spacing: 5px;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .tagline-container p {
-    max-width: 500px;
+    max-width: 550px;
     font-size: 16px;
     margin-bottom: 30px;
     opacity: 0.8;
+    line-height: 1.5;
 }
 
-/* The secondary button below the tagline needs the same styling */
+/* Вторая кнопка (снизу) - с серой рамкой */
 .secondary-btn {
-    border-color: var(--accent-glow); /* Can change border color for visual distinction */
-    /* Add a subtle glow to this button if desired */
-    box-shadow: 0 0 5px var(--accent-glow);
+    padding: 10px 20px;
+    border: 1px solid #797979; /* Серая рамка */
+    background-color: transparent;
+    font-size: 14px;
+    box-shadow: none;
+}
+        
+/* Стрелка в кнопке */
+.launch-app-btn .arrow {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* 📱 Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .glowing-text {
+        font-size: 18vw; 
+        margin-bottom: 30px;
+    }
+    .nav-links {
+        display: none; /* Скрываем навигацию */
+    }
+    .main-header {
+        justify-content: center; 
+        gap: 20px;
+    }
+    .header-btn {
+        /* Делаем кнопку немного меньше на мобильных */
+        padding: 6px 12px;
+        font-size: 10px;
+    }
 }
