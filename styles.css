@@ -1,9 +1,9 @@
-/* Reset + base */
+/* ===== base reset ===== */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
-  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  font-family: "Rajdhani", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background:#0b0b0b;
   display:flex;
   align-items:center;
@@ -11,138 +11,150 @@ body{
   padding:48px;
 }
 
-/* Frame (серый бордюр) */
+/* Frame to emulate grey page border from the screenshot */
 .frame{
   width:100%;
   max-width:1180px;
-  background:#0b0b0b;
   position:relative;
-  border:40px solid #6f6f72;
-  box-shadow:0 0 0 1px rgba(0,0,0,0.2) inset;
+  background:#0b0b0b;
+  border:40px solid #6f6f72; /* frame grey */
   overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.2) inset;
 }
 
-/* Header bar */
+/* Topbar (centered black rounded rect with slight pink border) */
 .topbar{
-  width:78%;
-  max-width:980px;
-  margin:28px auto 0;
-  height:54px;
-  background:linear-gradient(180deg,#0b0b0b,#141314);
-  border-radius:6px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:8px 14px;
-  border:2px solid rgba(255,182,196,0.14);
-  box-shadow:0 6px 18px rgba(0,0,0,0.6),0 1px 0 rgba(255,182,196,0.06) inset;
-  font-family:"Inter",sans-serif;
-  color:#eaeaea;
   position:absolute;
   left:50%;
   transform:translateX(-50%);
   top:16px;
-  z-index:30;
+  width:78%;
+  max-width:980px;
+  height:54px;
+  border-radius:6px;
+  padding:8px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:linear-gradient(180deg,#0b0709 0%, #121012 100%);
+  border:2px solid rgba(255,182,196,0.14); /* soft pink outline like original */
+  box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,182,196,0.06);
+  z-index:40;
 }
 
+/* Logo block: inline svg + word */
 .logo{
   display:flex;
   align-items:center;
   gap:10px;
-  font-weight:800;
-  font-family:"Nunito",sans-serif;
-  letter-spacing:0.6px;
   color:#fff;
+  font-family:"Nunito", "Montserrat", sans-serif;
+  font-weight:900;
   font-size:20px;
 }
 
-.logo-icon{
-  width:28px;height:28px;border-radius:50%;
-  background:linear-gradient(135deg,#ffb6c4,#ff97e6);
-  box-shadow:0 2px 8px rgba(255,110,215,0.35);
-  display:inline-block;
+/* Logo word style tuned to look like source (rounded, bold) */
+.logo-word{
+  color:#ffffff;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:0.6px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.02);
 }
 
+/* The inline SVG size */
+.logo-svg{
+  width:36px;
+  height:36px;
+  display:block;
+  transform:translateY(1px);
+}
+
+/* Navigation — narrow/condensed uppercase letters (closest match) */
 .nav{
   display:flex;
-  gap:22px;
+  gap:26px;
   align-items:center;
   font-size:13px;
   text-transform:uppercase;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.65);
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.72);
+  font-family:"Rajdhani", monospace;
 }
-.nav a{color:inherit;text-decoration:none;}
+.nav a{ color:inherit; text-decoration:none; }
 
+/* Header call-to-action (pink rounded rectangle) */
 .header-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 16px;
   background:#ffd7e6;
   color:#111;
+  padding:8px 16px;
   border-radius:4px;
   font-weight:700;
-  text-decoration:none;
   font-size:13px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   box-shadow:0 6px 18px rgba(255,145,200,0.12);
 }
 
-/* HERO */
+/* HERO area */
 .hero{
   min-height:720px;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
   padding:120px 40px 80px;
+  position:relative;
   overflow:hidden;
 }
 
-/* Huma glowing text */
+/* --- Huge Huma word with layered glow --- */
 .glow-wrap{
   position:absolute;
-  left:50%;
   top:12%;
+  left:50%;
   transform:translateX(-50%);
+  pointer-events:none;
+  z-index:20;
   width:100%;
   display:flex;
   align-items:flex-start;
   justify-content:center;
-  pointer-events:none;
-  z-index:2;
 }
 
+/* Main big text: Nunito heavy. sizes tuned to be visually identical */
 .glow-text{
-  font-family:"Nunito",sans-serif;
+  font-family:"Nunito", "Montserrat", sans-serif;
   font-weight:900;
   margin:0;
-  font-size:20.8vw;
+  color:#ffffff;
+  font-size:20.8vw; /* responsive base */
   line-height:0.92;
-  color:#fff;
   letter-spacing:-2px;
   position:relative;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
 
+/* inner soft violet glow (first layer, slightly offset) */
 .glow-text::before{
   content:attr(data-text);
   position:absolute;
-  inset:0;
+  left:0;right:0;top:0;bottom:0;
   z-index:-1;
+  color:#eae1ff;
   filter:blur(28px);
-  color:#d7b8ff;
-  opacity:0.95;
   transform:translateY(6px);
+  opacity:0.98;
   mix-blend-mode:screen;
   text-shadow:
-    0 0 28px rgba(200,140,255,0.95),
+    0 0 28px rgba(196,138,255,0.95),
     -24px 0 120px rgba(160,110,255,0.42),
     24px 0 120px rgba(160,110,255,0.42);
 }
 
+/* outer halo + rays */
 .glow-text::after{
   content:attr(data-text);
   position:absolute;
@@ -158,32 +170,30 @@ body{
   transform:translateY(24px) scale(1.02);
 }
 
-/* Rays under text */
+/* purple streaks / rays under letters, shaped with multiple radial gradients */
 .rays{
   position:absolute;
   left:50%;
   transform:translateX(-50%);
+  top:34%;
   width:110%;
   height:260px;
-  top:34%;
+  z-index:12;
   pointer-events:none;
-  z-index:1;
   background:
-    radial-gradient(40% 50% at 20% 40%, rgba(170,110,255,0.20), transparent 12%),
-    radial-gradient(40% 50% at 40% 54%, rgba(170,110,255,0.24), transparent 12%),
-    radial-gradient(40% 50% at 60% 44%, rgba(170,110,255,0.22), transparent 12%),
-    radial-gradient(40% 50% at 80% 48%, rgba(170,110,255,0.18), transparent 12%),
-    linear-gradient(0deg, rgba(15,12,18,0.0), rgba(15,12,18,0.0));
+    radial-gradient(40% 50% at 20% 40%, rgba(170,110,255,0.22), transparent 12%),
+    radial-gradient(40% 50% at 40% 54%, rgba(170,110,255,0.26), transparent 12%),
+    radial-gradient(40% 50% at 60% 44%, rgba(170,110,255,0.20), transparent 12%),
+    radial-gradient(40% 50% at 80% 48%, rgba(170,110,255,0.16), transparent 12%);
   filter:blur(40px) contrast(115%);
   mix-blend-mode:screen;
-  transform-origin:center;
 }
 
-/* Tagline block */
+/* Tagline block: centered under big word (tuned spacing) */
 .tagline{
   position:relative;
-  z-index:5;
-  margin-top:460px;
+  z-index:30;
+  margin-top:460px; /* pushes tagline beneath huge word like in the screenshot */
   text-align:center;
   max-width:780px;
   margin-left:auto;
@@ -191,15 +201,17 @@ body{
   color:#dcdcdc;
 }
 
+/* Square retro-like uppercase, tuned size to match */
 .tagline h2{
   font-family:"Press Start 2P", monospace;
   font-size:28px;
   letter-spacing:4px;
   margin:0 0 22px 0;
-  color:#fff;
+  color:#ffffff;
   text-transform:uppercase;
 }
 
+/* small descriptive line */
 .tagline p{
   margin:0 auto 28px auto;
   font-size:12px;
@@ -209,6 +221,7 @@ body{
   max-width:680px;
 }
 
+/* bottom CTA */
 .cta-big{
   display:inline-flex;
   align-items:center;
@@ -223,30 +236,30 @@ body{
   box-shadow:0 6px 18px rgba(255,145,200,0.12);
 }
 
-/* Vignette */
+/* gentle dark vignette at bottom to match screenshot depth */
 .frame::before{
   content:"";
   position:absolute;
   left:0;right:0;top:0;bottom:0;
   pointer-events:none;
   background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
-  z-index:0;
+  z-index:2;
 }
 
-/* Responsive tweaks */
+/* ===== responsive tweaks (clamp sizes to match screenshot proportions) ===== */
 @media (min-width:1400px){
-  .glow-text{font-size:320px;}
-  .tagline{margin-top:520px;}
+  .glow-text{ font-size:320px; }
+  .tagline{ margin-top:520px; }
 }
 @media (max-width:1000px){
-  .topbar{width:88%;height:50px;padding:6px 12px;}
-  .glow-text{font-size:26vw;}
-  .tagline{margin-top:420px;}
+  .topbar{ width:88%; height:50px; padding:6px 12px; }
+  .glow-text{ font-size:26vw; }
+  .tagline{ margin-top:420px; }
 }
 @media (max-width:640px){
-  .frame{border:24px solid #6f6f72;padding:0;}
-  .glow-text{font-size:34vw;letter-spacing:-1px;}
-  .tagline h2{font-size:16px;letter-spacing:2px;}
-  .tagline p{font-size:11px;letter-spacing:1.6px;padding:0 12px;}
-  .topbar{top:10px;}
+  .frame{ border:24px solid #6f6f72; padding:0; }
+  .glow-text{ font-size:34vw; letter-spacing:-1px; }
+  .tagline h2{ font-size:16px; letter-spacing:2px; }
+  .tagline p{ font-size:11px; letter-spacing:1.6px; padding:0 12px; }
+  .topbar{ top:10px; }
 }
