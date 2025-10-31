@@ -1,186 +1,252 @@
-/* 🎨 Цветовые переменные */
-:root {
-    --primary-color: #ffffff;
-    --glow-center: #ffc4ff; /* Очень светлый центр свечения */
-    --glow-purple: #a020f0; /* Насыщенный фиолетовый для ореола */
-    --background-dark: #202020; /* Фон, максимально приближенный к исходнику */
-    --border-grey: #444444; /* Серая рамка кнопки */
-    --logo-color: #d381ff; 
+/* Reset + base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background:#0b0b0b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px;
 }
 
-/* 💻 Сброс стилей и основные настройки */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* Убираем скругление по умолчанию */
-    border-radius: 0 !important;
+/* Frame (серый бордюр) */
+.frame{
+  width:100%;
+  max-width:1180px;
+  background:#0b0b0b;
+  position:relative;
+  border:40px solid #6f6f72;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.2) inset;
+  overflow:hidden;
 }
 
-body {
-    /* Основной шрифт для всего, кроме Huma */
-    font-family: 'Inter', sans-serif; 
-    background-color: var(--background-dark); 
-    color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 0 4%; 
+/* Header bar */
+.topbar{
+  width:78%;
+  max-width:980px;
+  margin:28px auto 0;
+  height:54px;
+  background:linear-gradient(180deg,#0b0b0b,#141314);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 14px;
+  border:2px solid rgba(255,182,196,0.14);
+  box-shadow:0 6px 18px rgba(0,0,0,0.6),0 1px 0 rgba(255,182,196,0.06) inset;
+  font-family:"Inter",sans-serif;
+  color:#eaeaea;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:16px;
+  z-index:30;
 }
 
-/* 🔝 Header (Шапка сайта) */
-.main-header {
-    width: 100%;
-    max-width: 1200px;
-    padding: 25px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Убираем нижнюю границу, её нет в оригинале, только темный фон */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  font-family:"Nunito",sans-serif;
+  letter-spacing:0.6px;
+  color:#fff;
+  font-size:20px;
 }
 
-/* Логотип Huma */
-.logo {
-    font-size: 14px;
-    font-weight: 700;
-    display: flex; 
-    align-items: center;
-    gap: 8px; 
+.logo-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#ffb6c4,#ff97e6);
+  box-shadow:0 2px 8px rgba(255,110,215,0.35);
+  display:inline-block;
 }
 
-.logo-icon {
-    /* Настройка условного места для иконки Huma */
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    background-color: var(--logo-color);
-    /* Имитируем скругление иконки */
-    border-radius: 3px !important;
-    /* Добавим легкое свечение */
-    box-shadow: 0 0 5px var(--logo-color);
+.nav{
+  display:flex;
+  gap:22px;
+  align-items:center;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.65);
+}
+.nav a{color:inherit;text-decoration:none;}
+
+.header-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 16px;
+  background:#ffd7e6;
+  color:#111;
+  border-radius:4px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:13px;
+  box-shadow:0 6px 18px rgba(255,145,200,0.12);
 }
 
-/* Навигация */
-.nav-links a {
-    color: var(--primary-color);
-    text-decoration: none;
-    margin-right: 40px; 
-    font-size: 11px; /* Чуть меньше */
-    font-weight: 400; /* Более тонкий */
-    opacity: 0.7; 
-    letter-spacing: 1px; /* Немного разрядим */
-    text-transform: uppercase;
+/* HERO */
+.hero{
+  min-height:720px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:120px 40px 80px;
+  overflow:hidden;
 }
 
-/* Общие стили для кнопок */
-.launch-app-btn {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 400; /* Тонкий шрифт */
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    font-size: 11px;
-    padding: 6px 12px;
+/* Huma glowing text */
+.glow-wrap{
+  position:absolute;
+  left:50%;
+  top:12%;
+  transform:translateX(-50%);
+  width:100%;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  pointer-events:none;
+  z-index:2;
 }
 
-/* Кнопка в хедере (яркая, прямоугольная) */
-.header-btn {
-    background-color: var(--glow-purple); 
-    border: 1px solid var(--glow-center); /* Тонкая белая рамка сверху фиолетового */
-    box-shadow: 0 0 10px rgba(160, 32, 240, 0.7); /* Сильное свечение кнопки */
+.glow-text{
+  font-family:"Nunito",sans-serif;
+  font-weight:900;
+  margin:0;
+  font-size:20.8vw;
+  line-height:0.92;
+  color:#fff;
+  letter-spacing:-2px;
+  position:relative;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* 🌟 Герой-секция (Основной контент) */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1; 
-    text-align: center;
-    padding-bottom: 12vh; 
+.glow-text::before{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  filter:blur(28px);
+  color:#d7b8ff;
+  opacity:0.95;
+  transform:translateY(6px);
+  mix-blend-mode:screen;
+  text-shadow:
+    0 0 28px rgba(200,140,255,0.95),
+    -24px 0 120px rgba(160,110,255,0.42),
+    24px 0 120px rgba(160,110,255,0.42);
 }
 
-/* ЭФФЕКТ СВЕЧЕНИЯ ТЕКСТА "Huma" */
-.glowing-text {
-    /* Используем Nunito для скругленного и жирного вида */
-    font-family: 'Nunito', sans-serif; 
-    font-size: clamp(100px, 15vw, 220px); 
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    line-height: 0.8; 
-    margin-bottom: 70px;
-    
-    /* СЛОЖНЫЙ МНОГОСЛОЙНЫЙ ТЕНЬ ДЛЯ ТОЧНОСТИ */
-    text-shadow: 
-        0 0 10px var(--glow-center),       /* Ближайший, яркий свет */
-        0 0 30px var(--glow-center),      /* Яркий, насыщенный свет */
-        0 0 80px var(--glow-purple),   
-        0 0 150px var(--glow-purple),
-        /* Добавляем горизонтально растянутый тень для блика */
-        0 0 200px var(--glow-purple),
-        0 50px 100px var(--glow-purple),  /* Нижний широкий блик */
-        0 -50px 100px var(--glow-purple); /* Верхний широкий блик */
-
-    /* Добавим размытие и контраст для "засвета" */
-    filter: blur(0.5px) brightness(1.2) contrast(1.1); 
+.glow-text::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  z-index:-2;
+  color:transparent;
+  filter:blur(46px) saturate(120%);
+  opacity:0.95;
+  text-shadow:
+    0 0 60px rgba(182,100,255,0.85),
+    -80px 20px 160px rgba(150,80,255,0.55),
+    80px 20px 160px rgba(150,80,255,0.55);
+  transform:translateY(24px) scale(1.02);
 }
 
-/* Подзаголовок и описание */
-.tagline-container {
-    padding: 0 20px;
+/* Rays under text */
+.rays{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:110%;
+  height:260px;
+  top:34%;
+  pointer-events:none;
+  z-index:1;
+  background:
+    radial-gradient(40% 50% at 20% 40%, rgba(170,110,255,0.20), transparent 12%),
+    radial-gradient(40% 50% at 40% 54%, rgba(170,110,255,0.24), transparent 12%),
+    radial-gradient(40% 50% at 60% 44%, rgba(170,110,255,0.22), transparent 12%),
+    radial-gradient(40% 50% at 80% 48%, rgba(170,110,255,0.18), transparent 12%),
+    linear-gradient(0deg, rgba(15,12,18,0.0), rgba(15,12,18,0.0));
+  filter:blur(40px) contrast(115%);
+  mix-blend-mode:screen;
+  transform-origin:center;
 }
 
-.tagline-container h2 {
-    font-size: clamp(20px, 4vw, 30px); 
-    letter-spacing: 6px; /* Очень большое расстояние */
-    margin-bottom: 25px;
-    font-weight: 400; 
-    opacity: 0.9;
+/* Tagline block */
+.tagline{
+  position:relative;
+  z-index:5;
+  margin-top:460px;
+  text-align:center;
+  max-width:780px;
+  margin-left:auto;
+  margin-right:auto;
+  color:#dcdcdc;
 }
 
-.tagline-container p {
-    max-width: 550px;
-    font-size: 15px;
-    margin-bottom: 30px;
-    opacity: 0.6; 
-    line-height: 1.6;
-    font-weight: 300; /* Самый тонкий Inter */
+.tagline h2{
+  font-family:"Press Start 2P", monospace;
+  font-size:28px;
+  letter-spacing:4px;
+  margin:0 0 22px 0;
+  color:#fff;
+  text-transform:uppercase;
 }
 
-/* Вторая кнопка (снизу) - с серой рамкой */
-.secondary-btn {
-    padding: 8px 15px;
-    border: 1px solid var(--border-grey); 
-    background-color: transparent;
-    font-size: 13px;
-    font-weight: 400; 
-}
-        
-/* Стрелка в кнопке */
-.launch-app-btn .arrow {
-    margin-left: 5px;
-    font-weight: 700;
+.tagline p{
+  margin:0 auto 28px auto;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  max-width:680px;
 }
 
-/* 📱 Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .glowing-text {
-        font-size: 18vw; 
-        margin-bottom: 40px;
-    }
-    .nav-links {
-        display: none; 
-    }
-    .main-header {
-        justify-content: space-around; 
-    }
-    .tagline-container h2 {
-        letter-spacing: 4px;
-        font-size: 18px;
-    }
+.cta-big{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 18px;
+  border-radius:4px;
+  background:#ffd7e6;
+  color:#111;
+  font-weight:700;
+  text-decoration:none;
+  font-size:13px;
+  box-shadow:0 6px 18px rgba(255,145,200,0.12);
+}
+
+/* Vignette */
+.frame::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;bottom:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+  z-index:0;
+}
+
+/* Responsive tweaks */
+@media (min-width:1400px){
+  .glow-text{font-size:320px;}
+  .tagline{margin-top:520px;}
+}
+@media (max-width:1000px){
+  .topbar{width:88%;height:50px;padding:6px 12px;}
+  .glow-text{font-size:26vw;}
+  .tagline{margin-top:420px;}
+}
+@media (max-width:640px){
+  .frame{border:24px solid #6f6f72;padding:0;}
+  .glow-text{font-size:34vw;letter-spacing:-1px;}
+  .tagline h2{font-size:16px;letter-spacing:2px;}
+  .tagline p{font-size:11px;letter-spacing:1.6px;padding:0 12px;}
+  .topbar{top:10px;}
 }
