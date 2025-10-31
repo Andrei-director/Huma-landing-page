@@ -5,17 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Huma - The First PayFi Network</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Inter:wght@300;400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Fonts: Nunito (large word), Rajdhani (condensed nav), Press Start 2P (tagline) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Rajdhani:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="frame" role="main">
-    <!-- header bar -->
-    <div class="topbar" aria-hidden="false">
-      <div class="logo"><span class="logo-icon" aria-hidden="true"></span>Huma</div>
+  <div class="frame" role="main" aria-label="Huma landing mockup">
+    <!-- centered header bar -->
+    <div class="topbar" role="banner">
+      <!-- SVG logo to match original: pink circle with diagonal cut + Huma word -->
+      <div class="logo" aria-hidden="false">
+        <!-- Inline SVG logo for pixel-faithful rendering -->
+        <svg class="logo-svg" width="44" height="30" viewBox="0 0 44 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffd2e5"/>
+              <stop offset="1" stop-color="#f6b8e0"/>
+            </linearGradient>
+            <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- circle with diagonal cut (drawn as two halves to simulate the cut) -->
+          <g filter="url(#f1)">
+            <path d="M14.2 1.6 A12.8 12.8 0 1 1 14.2 28.4 A12.8 12.8 0 1 1 14.2 1.6" fill="url(#g1)"/>
+            <!-- diagonal cut: a slightly darker triangular cut to emulate the 'H' stroke -->
+            <path d="M10 3 L20 15 L10 27 L14 27 L24 15 L14 3 Z" fill="#ffd7e6" opacity="0.95"/>
+          </g>
+        </svg>
+
+        <span class="logo-word">Huma</span>
+      </div>
 
       <nav class="nav" aria-label="Main navigation">
         <a href="#">HOW IT WORKS</a>
@@ -23,23 +45,24 @@
         <a href="#">BLOG</a>
       </nav>
 
-      <a class="header-cta" href="#" aria-label="Launch app">
-        LUNCH APP <span style="font-size:14px;opacity:.9">→</span>
-      </a>
+      <a class="header-cta" href="#" aria-label="Launch app">LUNCH APP <span class="arrow">→</span></a>
     </div>
 
-    <!-- hero content -->
-    <section class="hero" aria-label="Hero">
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero section">
+      <!-- huge Huma text (multi-layer glow) -->
       <div class="glow-wrap" aria-hidden="true">
         <h1 class="glow-text" data-text="Huma">Huma</h1>
       </div>
 
+      <!-- purple rays under the luminous letters -->
       <div class="rays" aria-hidden="true"></div>
 
-      <div class="tagline">
+      <!-- tagline block -->
+      <div class="tagline" role="region" aria-label="Tagline">
         <h2>THE FIRST PAYFI NETWORK</h2>
         <p>HUMA ACCELERATES GLOBAL PAYMENTS WITH INSTANT ACCESS TO LIQUIDITY ANYWHERE, ANYTIME.</p>
-        <a class="cta-big" href="#">LUNCH APP <span style="opacity:.9">→</span></a>
+        <a class="cta-big" href="#" aria-label="Launch app bottom">LUNCH APP <span class="arrow">→</span></a>
       </div>
     </section>
   </div>
