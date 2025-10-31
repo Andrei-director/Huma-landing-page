@@ -1,41 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huma - The First PayFi Network</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Huma - The First PayFi Network</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Inter:wght@300;400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="logo">
-            <span class="logo-icon"></span> Huma 
-        </div> 
-        
-        <nav class="nav-links">
-            <a href="#">HOW IT WORKS</a>
-            <a href="#">COMMUNITY</a>
-            <a href="#">BLOG</a>
-        </nav>
-        
-        <a href="#" class="launch-app-btn header-btn">
-            LUNCH APP <span class="arrow">→</span>
-        </a>
-    </header>
+  <div class="frame" role="main">
+    <!-- header bar -->
+    <div class="topbar" aria-hidden="false">
+      <div class="logo"><span class="logo-icon" aria-hidden="true"></span>Huma</div>
 
-    <main class="hero-section">
-        <h1 class="glowing-text">Huma</h1>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#">HOW IT WORKS</a>
+        <a href="#">COMMUNITY</a>
+        <a href="#">BLOG</a>
+      </nav>
 
-        <div class="tagline-container">
-            <h2>THE FIRST PAYFI NETWORK</h2>
-            <p>HUMA ACCELERATES GLOBAL PAYMENTS WITH INSTANT ACCESS TO LIQUIDITY ANYWHERE, ANYTIME.</p>
-            <a href="#" class="launch-app-btn secondary-btn">
-                LUNCH APP <span class="arrow">→</span>
-            </a>
-        </div>
-    </main>
+      <a class="header-cta" href="#" aria-label="Launch app">
+        LUNCH APP <span style="font-size:14px;opacity:.9">→</span>
+      </a>
+    </div>
+
+    <!-- hero content -->
+    <section class="hero" aria-label="Hero">
+      <div class="glow-wrap" aria-hidden="true">
+        <h1 class="glow-text" data-text="Huma">Huma</h1>
+      </div>
+
+      <div class="rays" aria-hidden="true"></div>
+
+      <div class="tagline">
+        <h2>THE FIRST PAYFI NETWORK</h2>
+        <p>HUMA ACCELERATES GLOBAL PAYMENTS WITH INSTANT ACCESS TO LIQUIDITY ANYWHERE, ANYTIME.</p>
+        <a class="cta-big" href="#">LUNCH APP <span style="opacity:.9">→</span></a>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
