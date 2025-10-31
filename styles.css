@@ -13,15 +13,15 @@
 }
 
 body {
+    /* Меняем шрифт на Inter */
+    font-family: 'Inter', sans-serif; 
     background-color: var(--background-color);
     color: var(--primary-color);
-    font-family: sans-serif; /* Replace with actual font */
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
 }
-
 /* Header Styles */
 .main-header {
     width: 90%;
